@@ -1,53 +1,8 @@
-<template>
-  <div id="app">
-      <RegistroLogin @entrar="entrarWeb" v-if="idUsuario === ''"></RegistroLogin>
-      <WebLogeado v-if="idUsuario != ''"></WebLogeado>
-  </div>
-</template>
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-<script>
-import RegistroLogin from './components/RegistroLogin.vue'
-import WebLogeado from './components/Web.vue'
-
-export default {
-  name: 'App',
-  components: {
-    RegistroLogin,
-    WebLogeado
-  },
-  data() {
-    return{
-        idUsuario : ''
-    }
-  },
-  methods:{
-    entrarWeb(id){
-      this.idUsuario = id
-    }
-  }
-}
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  margin-top: 60px;
-}
-
-:root{
-  --color-base: 252; /*252 azul*/
-
-  --color-principal: rgb(13, 108, var(--color-base));
-  --color-principal-hover: rgb(50, 70, var(--color-base));
-  --color-formulario: #E7EFFF;
-  --white: white;
-}
-
-
-
-
-/* RESET DE LOS ESTILOS DEFAULT */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -91,5 +46,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-</style>
