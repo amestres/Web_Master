@@ -5,7 +5,7 @@
             <button class="boton" id="botonLogin" @click="cambiarFormularioLogin">Ya tengo cuenta</button>
         </div>
         <div class="container-formularios">
-            <form v-if="formulario === 1">
+            <form v-if="formulario === 1" onsubmit="event.preventDefault()">
                 <div class="container-separador">
                     <label for="login" class="label-formulario">Login</label>
                     <input v-model="formData.login" type="text" name="login" required>
@@ -27,7 +27,7 @@
 
                 <input type="submit" id="boton-submit-registrar" @click="crearUsuario" value="Registrar usuario">
             </form>
-            <form v-if="formulario === 2">
+            <form v-if="formulario === 2" onsubmit="event.preventDefault()">
                 <div class="container-separador">
                     <label for="login" class="label-formulario">Login</label>
                     <input v-model="formData.login" type="text" name="login" required>
