@@ -85,7 +85,7 @@ export default {
             })
             if(response.data["message"] == "OK"){
                 console.log("Usuario registrado")
-                this.$emit('entrar', response.data.data["id"])
+                this.$emit('entrar', response.data.data["id"], 1)
             }
         },
         async verificarFormularioLogin(){
@@ -95,7 +95,7 @@ export default {
             })
             if(response.data["message"] == "OK"){
                 console.log("Usuario encontrado")
-                this.$emit('entrar', response.data.data["id"])
+                this.$emit('entrar', response.data.data["id"], response.data.data["rol"])
             }
         }
     }

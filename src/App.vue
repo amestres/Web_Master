@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <RegistroLogin @entrar="entrarWeb" v-if="idUsuario === ''"></RegistroLogin>
-      <WebLogeado v-if="idUsuario != ''"></WebLogeado>
+      <WebLogeado v-if="idUsuario != ''" :id="idUsuario" :rol="rolUsuario"></WebLogeado>
   </div>
 </template>
 
@@ -17,12 +17,14 @@ export default {
   },
   data() {
     return{
-        idUsuario : ''
+        idUsuario : '',
+        rolUsuario : '',
     }
   },
   methods:{
-    entrarWeb(id){
+    entrarWeb(id, rol){
       this.idUsuario = id
+      this.rolUsuario = rol
     }
   }
 }
