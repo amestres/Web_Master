@@ -83,9 +83,16 @@ export default {
                 nombre : this.formData.nombre, 
                 apellidos : this.formData.apellidos
             })
-            if(response.data["message"] == "OK"){
+
+            //Mostramos por consola que mensaje nos ha devuelto la api
+            if(response.data.data["resultado"] === "ok"){
                 console.log("Usuario registrado")
-                this.$emit('entrar', response.data.data["id"], 1)
+                this.$emit('entrar', response.data.data["id"], "normal")
+            }
+            else{
+                if(response.data.data["resultado"] === "login_usuario_ya_existe"){
+                    console.log("Ya existe ese login")
+                }
             }
         },
         async verificarFormularioLogin(){
@@ -93,9 +100,15 @@ export default {
                 login : this.formData.login, 
                 password : this.formData.password, 
             })
-            if(response.data["message"] == "OK"){
+
+            if(response.data.data["resultado"] === "ok"){  
                 console.log("Usuario encontrado")
                 this.$emit('entrar', response.data.data["id"], response.data.data["rol"])
+            }
+            else{
+                if(response.data.data["resultado"] === "no_ok"){
+                    console.log("Usuario no encontrado")
+                }
             }
         }
     }

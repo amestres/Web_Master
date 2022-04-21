@@ -1,6 +1,6 @@
 <template>
     <div class="container-boton">
-        <p>HOLA</p>
+        <p>{{texto}}</p>
     </div>
 </template>
 
@@ -9,9 +9,10 @@ export default {
     name: 'BotonMenu',
     data() {
         return{
-            texto : ''
+            
         }
     },
+    props:["texto"],
     methods:{
         
     }
@@ -22,7 +23,9 @@ export default {
     .container-boton{
         width: 200PX;
         height: 100%;
+        background-color: #5271ff;
         color: white;
         border: 1px solid white;
+        
     }
 </style>

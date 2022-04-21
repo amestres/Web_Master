@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <RegistroLogin @entrar="entrarWeb" v-if="idUsuario === ''"></RegistroLogin>
+      <RegistroLogin v-if="idUsuario === ''" @entrar="entrarWeb" ></RegistroLogin>
       <WebLogeado v-if="idUsuario != ''" :id="idUsuario" :rol="rolUsuario"></WebLogeado>
   </div>
 </template>

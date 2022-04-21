@@ -1,10 +1,12 @@
 <template>
     <div class="container-main">
         <div class="container-menu" v-if="rol === 'normal'">
-            <BotonMenu v-for="opciones in 3" :key="opciones"></BotonMenu>
+            <img src="../assets/CLUVER.png" alt="logo">
+            <BotonMenu v-for="apartado in apartadosNormal" :key="apartado" :texto="apartado"></BotonMenu> 
         </div>
         <div class="container-menu" v-else-if="rol === 'administrador'">
-            <BotonMenu v-for="opciones in 2" :key="opciones"></BotonMenu>
+            <img src="../assets/CLUVER.png" alt="logo">
+            <BotonMenu v-for="apartado in apartadosAdministrador" :key="apartado" :texto="apartado"></BotonMenu>
         </div>
     </div>
 </template>
@@ -19,7 +21,16 @@ export default {
     },
     data() {
         return{
-            
+            apartadosNormal : {
+                0 : "Inicio",
+                1 : "Reservas",
+                2 : "Perfil"
+            },
+            apartadosAdministrador : {
+                0 : "Inicio",
+                1 : "Crear Comunidad",
+                2 : "Usuarios",
+            },
         }
     },
     props:["id","rol"],
@@ -38,7 +49,8 @@ export default {
        width: 100%;
        height: 4rem; 
        display: flex;
-       background-color: rgb(13, 108, 252);
+       justify-content: center;
+       background-color: #5271ff;
        color: white;
     }
 
