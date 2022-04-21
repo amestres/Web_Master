@@ -5,6 +5,8 @@
             <button class="boton" id="botonLogin" @click="cambiarFormularioLogin">Ya tengo cuenta</button>
         </div>
         <div class="container-formularios">
+
+            <!-- FROMULARIO REGISTRO-->
             <form v-if="formulario === 1" onsubmit="event.preventDefault()">
                 <div class="container-separador">
                     <label for="login" class="label-formulario">Login</label>
@@ -27,6 +29,8 @@
 
                 <input type="submit" id="boton-submit-registrar" @click="crearUsuario" value="Registrar usuario">
             </form>
+
+            <!-- FROMULARIO LOGIN-->
             <form v-if="formulario === 2" onsubmit="event.preventDefault()">
                 <div class="container-separador">
                     <label for="login" class="label-formulario">Login</label>
@@ -38,7 +42,7 @@
                     <input v-model="formData.password" type="password" name="password" required>
                 </div>
 
-                <input type="submit" id="boton-submit-login" @click="verificarFormularioLogin" value="Entrar">
+                <input type="submit" id="boton-submit-login" @click="logearUsuario" value="Entrar">
             </form>
         </div>  
     </div>
@@ -61,6 +65,7 @@ export default {
         }
     },
     methods:{
+        //Funciones para modificar el formulario que se ve.
         cambiarFormularioRegistro(){
             this.formulario = 1
             this.resetInputs()
@@ -76,6 +81,8 @@ export default {
             this.formData.nombre = ''
             this.formData.apellidos = ''
         },
+
+        //Funcion para crear un usuario nuevo (con rol normal)
         async crearUsuario(){
             const response = await axios.post('http://localhost/api/?servicio=registrar_usuario',{ 
                 login : this.formData.login, 
@@ -87,7 +94,7 @@ export default {
             //Mostramos por consola que mensaje nos ha devuelto la api
             if(response.data.data["resultado"] === "ok"){
                 console.log("Usuario registrado")
-                this.$emit('entrar', response.data.data["id"], "normal")
+                this.$emit('entrar', response.data.data["id"], "normal") //Devolvemos el id y el rol "normal" de usuario al componente padre (app) usando un $emit
             }
             else{
                 if(response.data.data["resultado"] === "login_usuario_ya_existe"){
@@ -95,15 +102,18 @@ export default {
                 }
             }
         },
-        async verificarFormularioLogin(){
+
+        //Funcion para ver si existe un registro con login y la password que se han introducido
+        async logearUsuario(){
             const response = await axios.post('http://localhost/api/?servicio=login',{
                 login : this.formData.login, 
                 password : this.formData.password, 
             })
 
+            //Mostramos por consola que mensaje nos ha devuelto la api
             if(response.data.data["resultado"] === "ok"){  
                 console.log("Usuario encontrado")
-                this.$emit('entrar', response.data.data["id"], response.data.data["rol"])
+                this.$emit('entrar', response.data.data["id"], response.data.data["rol"])  //Devolvemos el id y el rol de usuario al componente padre (app) usando un $emit
             }
             else{
                 if(response.data.data["resultado"] === "no_ok"){

@@ -1,9 +1,12 @@
 <template>
     <div class="container-main">
-        <div class="container-menu" v-if="rol === 'normal'">
+        <!-- Si el usuario logeado tiene rol normal se muestra un menú -->
+        <div class="container-menu" v-if="rol === 'normal'">  
             <img src="../assets/CLUVER.png" alt="logo">
             <BotonMenu v-for="apartado in apartadosNormal" :key="apartado" :texto="apartado"></BotonMenu> 
         </div>
+
+        <!-- Si el usuario logeado tiene rol admin se muestra el menú de administrador -->
         <div class="container-menu" v-else-if="rol === 'administrador'">
             <img src="../assets/CLUVER.png" alt="logo">
             <BotonMenu v-for="apartado in apartadosAdministrador" :key="apartado" :texto="apartado"></BotonMenu>
@@ -33,7 +36,7 @@ export default {
             },
         }
     },
-    props:["id","rol"],
+    props:["id","rol"],  //Recibimos variables (props) del componente padre (App.vue)
     methods:{
         
     }

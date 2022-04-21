@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <RegistroLogin v-if="idUsuario === ''" @entrar="entrarWeb" ></RegistroLogin>
-      <WebLogeado v-if="idUsuario != ''" :id="idUsuario" :rol="rolUsuario"></WebLogeado>
+      <RegistroLogin v-if="idUsuario === ''" @entrar="entrarWeb" ></RegistroLogin> <!--entrarWeb se lanza cuando el componente "RegistroLogin" devuelve un $emit con el nombre 'entrar -->
+      <WebLogeado v-if="idUsuario != ''" :id="idUsuario" :rol="rolUsuario"></WebLogeado>  <!-- Enviamos al componente "WebLogeado" el id del usuario logeado y el rol que tiene -->
   </div>
 </template>
 
@@ -17,13 +17,13 @@ export default {
   },
   data() {
     return{
-        idUsuario : '',
+        idUsuario : '',    //Estas 2 variables recibiran valor cuando el usuario se registre o se haga login (method entrarWeb)
         rolUsuario : '',
     }
   },
   methods:{
-    entrarWeb(id, rol){
-      this.idUsuario = id
+    entrarWeb(id, rol){   //Esta funcion se lanza con @entrar
+      this.idUsuario = id   //Guardamos el valor de los dos parámetros que recibimos
       this.rolUsuario = rol
     }
   }
