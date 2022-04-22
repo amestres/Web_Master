@@ -44,6 +44,8 @@
 
                 <input type="submit" id="boton-submit-login" @click="logearUsuario" value="Entrar">
             </form>
+
+            <vue-basic-alert :duration="300" :closeIn="300" ref="alert" />
         </div>  
     </div>
 </template>

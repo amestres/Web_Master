@@ -23,6 +23,9 @@ export default {
     .container-boton{
         width: 200PX;
         height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #5271ff;
         color: white;
         border: 1px solid white;

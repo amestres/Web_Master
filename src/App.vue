@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <RegistroLogin v-if="idUsuario === ''" @entrar="entrarWeb" ></RegistroLogin> <!--entrarWeb se lanza cuando el componente "RegistroLogin" devuelve un $emit con el nombre 'entrar -->
+      <RegistroLogin v-if="idUsuario === ''" @entrar="entrarWeb" ></RegistroLogin> <!--entrarWeb se lanza cuando el componente "RegistroLogin" devuelve un $emit con el nombre 'entrar' -->
       <WebLogeado v-if="idUsuario != ''" :id="idUsuario" :rol="rolUsuario"></WebLogeado>  <!-- Enviamos al componente "WebLogeado" el id del usuario logeado y el rol que tiene -->
   </div>
 </template>
